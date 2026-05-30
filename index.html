@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生日快乐！❤️</title>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="stage-0" class="stage active">
+        <h1>有一份特别的惊喜正在赶来...</h1>
+        <div id="countdown">00天 00时 00分 00秒</div>
+        <button id="unlock-btn" class="hidden" onclick="startUnlockSequence()">解锁你的生日惊喜！🎁</button>
+    </div>
+
+    <div id="title-card" class="title-stage">
+        <h1 class="giant-title">寿星QUIZ 👑</h1>
+    </div>
+
+    <div id="stage-1" class="stage">
+        <h2 id="quiz-heading">生日小测试 🧩</h2>
+        <p id="question-text">题目加载中...</p>
+        
+        <div id="options-container"></div>
+
+        <div id="quiz-feedback-container">
+            <p id="correct-random-line" class="correct-pop"></p>
+            <p id="memory-line" class="memory-pop"></p>
+        </div>
+        <button id="next-q-btn" class="hidden" onclick="loadQuestion()">下一题 →</button>
+    </div>
+
+    <div id="stage-1-5" class="stage">
+        <h2>🎉 恭喜通关！🎉</h2>
+        <p class="final-quiz-text">恭喜你，寿星老婆你答对了所有题目！！！<br><br>Next Level！！！尽情享受吧老婆！！！</p>
+        <button onclick="nextStage(2)">进入相册 📸</button>
+    </div>
+
+    <div id="stage-2" class="stage">
+        <div class="gallery-banner">生日快乐宝贝 这是我们目前的相册 🧸</div>
+        
+        <div class="slider-container">
+            <button class="arrow-btn left-arrow" onclick="changeSlide(-1)">❮</button>
+            <div class="slide-wrapper">
+                <img id="gallery-img" src="photo1.jpg" alt="我们的美好回忆">
+                <video id="gallery-video" controls class="hidden">
+                    <source src="video.mp4" type="video/mp4">
+                    您的浏览器不支持视频播放。
+                </video>
+            </div>
+            <button class="arrow-btn right-arrow" onclick="changeSlide(1)">❯</button>
+        </div>
+        
+        <p id="photo-quote" class="photo-quote-text">正在加载回忆...</p>
+        
+        <button class="end-gallery-btn" onclick="nextStage(2.5)">看完啦 💕</button>
+    </div>
+
+    <div id="stage-2-5" class="stage">
+        <p class="transition-message-text">
+            我希望我们会有更多美好回忆 <br>
+            我们一起把这些回忆放进我们的相册吧hehehehe 🥰
+        </p>
+        <button onclick="nextStage(3)">许个愿吧 🎂</button>
+    </div>
+
+    <div id="stage-3" class="stage">
+        <h2>许个愿望吧，寿星老婆！🎂</h2>
+        <p id="cake-instruction">吹蜡烛吧bb！（点每个火）</p>
+        
+        <div id="birthday-cake-wrapper">
+            <div class="candles-row">
+                <div class="candle-item">
+                    <div id="flame-1" class="candle-flame active-flame" onclick="blowIndividualCandle(1)">🔥</div>
+                    <div class="candle-stick"></div>
+                </div>
+                <div class="candle-item">
+                    <div id="flame-2" class="candle-flame active-flame" onclick="blowIndividualCandle(2)">🔥</div>
+                    <div class="candle-stick"></div>
+                </div>
+                <div class="candle-item">
+                    <div id="flame-3" class="candle-flame active-flame" onclick="blowIndividualCandle(3)">🔥</div>
+                    <div class="candle-stick"></div>
+                </div>
+            </div>
+            <div class="cake-tier tier-top"></div>
+            <div class="cake-tier tier-middle"></div>
+            <div class="cake-tier tier-bottom"></div>
+        </div>
+        
+        <div id="envelope-area" class="hidden">
+            <p class="click-hint">✨ 愿望实现！！！来这个是老公寄给你的信 ✨<br>点开他吧bb 📬</p>
+            <div id="envelope-icon" onclick="openEnvelope()">✉️</div>
+        </div>
+    </div>
+
+    <div id="stage-4" class="stage">
+        <div class="envelope">
+            <h2>生日快乐，我最漂亮的老婆女朋友女人姐姐学姐，我最漂亮的所有！🎉</h2>
+            <p class="letter-text">
+                To: 我的爱人 今日寿星 徐若徐
+
+                Baby, 祝你生日快乐，21岁的生日有我陪你一定感觉的很幸福吧，我想给你这次生日比较特别一点，就陶了点时间做这个网站 大多数是ai做的啦 但心意还是少不了的。老婆 我爱你哦 首先我祝你学业进步考到dean list 成为dean list优秀生，未来财源滚滚 开开心心不要一直伤心，每天都会有我陪伴 以后有豪宅跑车跟银行巨额。虽然不能正日陪你庆生但是我会陪回给你滴，我也希望可以给你看到我想给你的幸福，这次的生日theme比较好笑书呆子风，但我觉得你会觉得很可愛，这个网站你也可以存着 以后可以按回来看读一读着封信 看回去那些照片。
+
+                Okay 进入话题我有几个point要说大纲（鼓励，未来目标，还有什么呢hmmmmmm 还有我对你的看法hiahiahia）。
+
+                首先，baby我要鼓励你！！！你知道吗其实你很棒啊 you懂吗 你有自己的想法 你不容易被别人影响就是最棒了 这也是我喜欢你的原因okok，你也没因为被同学拉夸自己的前进而想要放弃，已经是人生大赢家了好吗 我也非常敬仰你啊老婆hehehehe，还有你也要有耐心 你很讨厌很多人我知道 跟我一样 但等我们出来 一起过情侣生活就你和我 我们一定会很快乐 现在只是挑战 别每次质疑自己 你一定要坚持哦 我爱你宝贝！！！！我也希望你家人健康 开心 忘了说 我以后也会照顾你家人的放心 。
+
+                对对对 有什么事躺在我肩膀 和我分享 我只是嘴巴硬 講話贱但其实我很喜欢听你的心事 帮你分担困难。。。我是你男朋友 我一定会陪你的 所以别觉得我每次对你没爱 几时说话几没情商，你都要讲我嘴巴欠打 kiss我再抱着我，然后继续跟我分享完不满的事。。。OKAY吗？？？还有哦成绩不代表一切 做不到條的 也没事 我们以后也是打工仔 至少以后有钱一定会比现在更快乐 没事的哟hehehehehe。
+
+                下一个就是人生目标 你的先，我覺得你要認真一点 你很有潜力的，度过了就可以relax了
+                我们一起努力先 3年而已 小事，你可以跟我一起做到吗？？？heheheheheh 还有就是你也要爱我一辈子不可以ntr我绿我放弃我 我也一定不会的你放心 你绿我 后果自负🤬🤬🤬。
+
+                okay 我的目标就是 是少点生气 更爱你 还有 说到做到，哎哟 很多啦 还有努力赚钱 给你温暖 爱你一辈子等我，我會做到的 我的目标明确 老婆你等着我 我要给你见证heheheheh 我也不会因为小事而气馁尤其是成绩 我知道你担心我 但我会聪明的 有你陪伴 我不会胡思乱想 笨笨 你是我的灯来的宝贝 这些目标我们互相叮嘱对方要完成 做对方的等吧 老婆hehehhehehehe。
+
+                okay last 是 我对你的看法 baby，放心 你每次说你会不会觉得我奶小 我肥了你会不会找别人，你会不会不爱我。我不会哦宝贝，我会珍惜你啊老婆 你选择了我 我一定不会忘掉你的，我就想路边的流浪狗被收信。你不管怎么样我都会爱你，我们人生就只能过一次 我就选择了你 你也选择了我 就不要再后悔了，所以不需要担心！！！我绝对不会因为你的外表或者什么小事而放弃你，你也会糊涂但我喜欢你的糊涂，我教你了你也会醒目，你多么灵，简直是wife material💕💕💕💕。
+
+                你笨么？？你不笨啊 只是 想法和我不一样 正常滴 你考进马大 实现了你的梦想 就证明你很厲害很聪明，我说你笨的話就是想逗你而已。我爱你老婆，你还有很多优点 但你每次喜欢站在负面的角度看，正面一点，你其實真的super duper超级棒，有你这个完美的老婆 我真的是非常荣幸。Love u BB❤️❤️❤️❤️❤️
+
+                Okay 我就写到这边先 祝你生日快乐baby 我爱你 我会陪你过一万个生日 前提是我要看你开开心心 你開心 让我感觉自己是个好男朋友 我也会开心 我们未来也开开心心 爱你一辈子 HAPPY BIRTHDAY🎂🎂🎂
+
+
+                爱你的帅哥哥，
+                <strong>李伟永</strong>
+            </p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

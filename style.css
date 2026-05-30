@@ -1,0 +1,337 @@
+body {
+    background-color: #ffe5ec;
+    color: #4c1c24;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* 修复：允许超长长情书顺畅向上滑动 */
+    margin: 0;
+    padding: 40px 0;   /* 留出上下间距，更显高级排版 */
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.stage {
+    display: none;
+    width: 90%;
+    max-width: 550px;
+    padding: 35px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+.hidden { display: none !important; }
+
+.title-stage {
+    display: none;
+    background: transparent;
+    box-shadow: none;
+}
+
+.stage.active, .title-stage.active {
+    display: block !important;
+}
+
+#countdown {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 20px 0;
+    color: #ff4d6d;
+}
+
+.giant-title {
+    font-size: 4.5rem;
+    color: #ff4d6d;
+    text-shadow: 2px 4px 10px rgba(255, 77, 109, 0.2);
+    animation: pulse 1.5s infinite alternate;
+}
+
+@keyframes pulse {
+    from { transform: scale(1); }
+    to { transform: scale(1.05); }
+}
+
+#options-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.mcq-btn {
+    background-color: #fff0f3;
+    color: #4c1c24;
+    border: 2px solid #ffb3c1;
+    padding: 14px 20px;
+    font-size: 1rem;
+    border-radius: 12px;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.2s ease;
+}
+
+.mcq-btn:hover {
+    background-color: #ffb3c1;
+    transform: translateY(-2px);
+}
+
+.mcq-btn.correct-green {
+    background-color: #2a9d8f !important;
+    color: white !important;
+    border-color: #1e7266 !important;
+}
+
+button {
+    background-color: #ff4d6d;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 1rem;
+    border-radius: 25px;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+button:hover {
+    background-color: #ff758f;
+}
+
+.correct-pop {
+    font-size: 1.1rem;
+    color: #2a9d8f;
+    font-weight: bold;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+.memory-pop {
+    font-style: italic;
+    color: #ff4d6d;
+    font-weight: bold;
+    margin-top: 0px;
+}
+
+.final-quiz-text {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    font-weight: bold;
+    color: #ff4d6d;
+}
+
+.gallery-banner {
+    font-size: 1.25rem;
+    font-weight: bold;
+    background-color: #fff0f3;
+    padding: 12px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    border: 2px dashed #ff4d6d;
+}
+
+.slider-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin: 15px 0;
+}
+
+.slide-wrapper img, .slide-wrapper video {
+    width: 280px;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 15px;
+    border: 4px solid #ffb3c1;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+.slide-wrapper video {
+    background-color: black;
+}
+
+.arrow-btn {
+    background-color: #ffb3c1;
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.arrow-btn:hover {
+    background-color: #ff4d6d;
+}
+
+.photo-quote-text {
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: #4c1c24;
+    margin: 15px 0;
+    min-height: 40px;
+}
+
+.transition-message-text {
+    font-size: 1.2rem;
+    line-height: 1.7;
+    font-weight: bold;
+    color: #ff4d6d;
+}
+
+/* ================= 互动三层蛋糕与大信封样式 ================= */
+#birthday-cake-wrapper {
+    margin: 40px auto;
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    transition: all 0.5s ease;
+}
+
+.candles-row {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    width: 100%;
+    margin-bottom: -5px;
+    z-index: 2;
+}
+
+.candle-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.candle-flame {
+    font-size: 2rem;
+    cursor: pointer;
+    user-select: none;
+    transition: transform 0.2s ease;
+}
+
+.candle-flame.active-flame {
+    animation: cakeFlicker 0.6s infinite alternate;
+}
+
+@keyframes cakeFlicker {
+    from { transform: scale(1) translateY(0); filter: drop-shadow(0 0 4px #ff4d6d); }
+    to { transform: scale(1.15) translateY(-2px); filter: drop-shadow(0 0 12px #ff758f); }
+}
+
+.candle-stick {
+    width: 8px;
+    height: 35px;
+    background: linear-gradient(to right, #ffb3c1, #ffc8dd);
+    border-radius: 3px 3px 0 0;
+    box-shadow: inset 1px 0 2px rgba(0,0,0,0.1);
+}
+
+.cake-tier {
+    background: #ffb3c1;
+    border-radius: 10px 10px 0 0;
+    position: relative;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05), inset 0 -8px 0 #ff758f;
+}
+
+.cake-tier::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 12px;
+    background-color: #ffffff;
+    border-radius: 10px 10px 0 0;
+}
+
+.tier-top { width: 180px; height: 40px; z-index: 1; }
+.tier-middle { width: 240px; height: 50px; margin-top: -2px; z-index: 0; }
+.tier-bottom {
+    width: 300px; height: 60px; margin-top: -2px;
+    border-radius: 10px 10px 5px 5px;
+    box-shadow: 0 6px 10px rgba(0,0,0,0.08), inset 0 -10px 0 #ff758f;
+}
+
+.tier-bottom::after {
+    content: "";
+    position: absolute;
+    bottom: -10px; left: -20px; right: -20px;
+    height: 10px;
+    background: #e5e5e5;
+    border-radius: 10px;
+    box-shadow: 0 4px 5px rgba(0,0,0,0.1);
+}
+
+#envelope-area {
+    margin-top: 20px;
+    animation: zoomInEnvelope 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes zoomInEnvelope {
+    from { transform: scale(0.5); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+#envelope-icon {
+    font-size: 8rem;
+    cursor: pointer;
+    display: inline-block;
+    filter: drop-shadow(0 10px 15px rgba(255, 77, 109, 0.15));
+    transition: all 0.3s ease;
+}
+
+#envelope-icon:hover {
+    transform: scale(1.15) rotate(3deg);
+    filter: drop-shadow(0 15px 25px rgba(255, 77, 109, 0.3));
+}
+
+.click-hint {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #ff4d6d;
+}
+
+.envelope {
+    background: #fff0f3;
+    padding: 30px;
+    border-radius: 15px;
+    border-left: 6px solid #ff4d6d;
+    text-align: left;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.02);
+}
+
+.letter-text {
+    line-height: 1.8;
+    font-size: 1.05rem;
+    white-space: pre-line;
+}
+
+/* ================= 倒计时点击飘字互动特效 ================= */
+.click-pop-text {
+    position: absolute;
+    pointer-events: none; /* 确保飘出的字不会挡住鼠标的后续点击 */
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #ff4d6d;
+    text-shadow: 1px 1px 4px rgba(255, 255, 255, 0.8);
+    z-index: 9999;
+    animation: floatUpAndFade 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    user-select: none;
+    white-space: nowrap;
+}
+
+@keyframes floatUpAndFade {
+    0% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(0.8) translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(1.2) translateY(-80px) rotate(10deg);
+    }
+}
